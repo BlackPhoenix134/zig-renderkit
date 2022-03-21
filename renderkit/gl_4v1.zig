@@ -1253,9 +1253,9 @@ pub fn pauseTransformFeedback() void {
     return (function_pointers.glPauseTransformFeedback orelse @panic("glPauseTransformFeedback was not bound."))();
 }
 
-pub fn getProgramStageiv(_program: GLuint, _shadertype: GLenum, _pname: GLenum, _values: [*c]GLint) void {
-    return (function_pointers.glGetProgramStageiv orelse @panic("glGetProgramStageiv was not bound."))(_program, _shadertype, _pname, _values);
-}
+// pub fn getProgramStageiv(_program: GLuint, _shadertype: GLenum, _pname: GLenum, _values: [*c]GLint) void {
+//     return (function_pointers.glGetProgramStageiv orelse @panic("glGetProgramStageiv was not bound."))(_program, _shadertype, _pname, _values);
+// }
 
 pub fn getUniformSubroutineuiv(_shadertype: GLenum, _location: GLint, _params: [*c]GLuint) void {
     return (function_pointers.glGetUniformSubroutineuiv orelse @panic("glGetUniformSubroutineuiv was not bound."))(_shadertype, _location, _params);
@@ -1649,21 +1649,21 @@ pub fn isTexture(_texture: GLuint) GLboolean {
     return (function_pointers.glIsTexture orelse @panic("glIsTexture was not bound."))(_texture);
 }
 
-pub fn getActiveSubroutineUniformName(_program: GLuint, _shadertype: GLenum, _index: GLuint, _bufSize: GLsizei, _length: [*c]GLsizei, _name: [*c]GLchar) void {
-    return (function_pointers.glGetActiveSubroutineUniformName orelse @panic("glGetActiveSubroutineUniformName was not bound."))(_program, _shadertype, _index, _bufSize, _length, _name);
-}
+// pub fn getActiveSubroutineUniformName(_program: GLuint, _shadertype: GLenum, _index: GLuint, _bufSize: GLsizei, _length: [*c]GLsizei, _name: [*c]GLchar) void {
+//     return (function_pointers.glGetActiveSubroutineUniformName orelse @panic("glGetActiveSubroutineUniformName was not bound."))(_program, _shadertype, _index, _bufSize, _length, _name);
+// }
 
-pub fn getActiveSubroutineUniformiv(_program: GLuint, _shadertype: GLenum, _index: GLuint, _pname: GLenum, _values: [*c]GLint) void {
-    return (function_pointers.glGetActiveSubroutineUniformiv orelse @panic("glGetActiveSubroutineUniformiv was not bound."))(_program, _shadertype, _index, _pname, _values);
-}
+// pub fn getActiveSubroutineUniformiv(_program: GLuint, _shadertype: GLenum, _index: GLuint, _pname: GLenum, _values: [*c]GLint) void {
+//     return (function_pointers.glGetActiveSubroutineUniformiv orelse @panic("glGetActiveSubroutineUniformiv was not bound."))(_program, _shadertype, _index, _pname, _values);
+// }
 
-pub fn getSubroutineIndex(_program: GLuint, _shadertype: GLenum, _name: [*c]const GLchar) GLuint {
-    return (function_pointers.glGetSubroutineIndex orelse @panic("glGetSubroutineIndex was not bound."))(_program, _shadertype, _name);
-}
+// pub fn getSubroutineIndex(_program: GLuint, _shadertype: GLenum, _name: [*c]const GLchar) GLuint {
+//     return (function_pointers.glGetSubroutineIndex orelse @panic("glGetSubroutineIndex was not bound."))(_program, _shadertype, _name);
+// }
 
-pub fn getSubroutineUniformLocation(_program: GLuint, _shadertype: GLenum, _name: [*c]const GLchar) GLint {
-    return (function_pointers.glGetSubroutineUniformLocation orelse @panic("glGetSubroutineUniformLocation was not bound."))(_program, _shadertype, _name);
-}
+// pub fn getSubroutineUniformLocation(_program: GLuint, _shadertype: GLenum, _name: [*c]const GLchar) GLint {
+//     return (function_pointers.glGetSubroutineUniformLocation orelse @panic("glGetSubroutineUniformLocation was not bound."))(_program, _shadertype, _name);
+// }
 
 pub fn getUniformdv(_program: GLuint, _location: GLint, _params: [*c]GLdouble) void {
     return (function_pointers.glGetUniformdv orelse @panic("glGetUniformdv was not bound."))(_program, _location, _params);
@@ -3303,30 +3303,30 @@ pub fn load(get_proc_address: fn ([*c]const u8) callconv(.C) ?*anyopaque) !void 
         log.err("entry point glPauseTransformFeedback not found!", .{});
         success = false;
     }
-    if(get_proc_address("glGetProgramStageiv")) |proc| {
-        function_pointers.glGetProgramStageiv = @ptrCast(?function_signatures.glGetProgramStageiv,  proc);
-    } else {
-        log.err("entry point glGetProgramStageiv not found!", .{});
-        success = false;
-    }
-    if(get_proc_address("glGetUniformSubroutineuiv")) |proc| {
-        function_pointers.glGetUniformSubroutineuiv = @ptrCast(?function_signatures.glGetUniformSubroutineuiv,  proc);
-    } else {
-        log.err("entry point glGetUniformSubroutineuiv not found!", .{});
-        success = false;
-    }
-    if(get_proc_address("glUniformSubroutinesuiv")) |proc| {
-        function_pointers.glUniformSubroutinesuiv = @ptrCast(?function_signatures.glUniformSubroutinesuiv,  proc);
-    } else {
-        log.err("entry point glUniformSubroutinesuiv not found!", .{});
-        success = false;
-    }
-    if(get_proc_address("glGetActiveSubroutineName")) |proc| {
-        function_pointers.glGetActiveSubroutineName = @ptrCast(?function_signatures.glGetActiveSubroutineName,  proc);
-    } else {
-        log.err("entry point glGetActiveSubroutineName not found!", .{});
-        success = false;
-    }
+    // if(get_proc_address("glGetProgramStageiv")) |proc| {
+    //     function_pointers.glGetProgramStageiv = @ptrCast(?function_signatures.glGetProgramStageiv,  proc);
+    // } else {
+    //     log.err("entry point glGetProgramStageiv not found!", .{});
+    //     success = false;
+    // }
+    // if(get_proc_address("glGetUniformSubroutineuiv")) |proc| {
+    //     function_pointers.glGetUniformSubroutineuiv = @ptrCast(?function_signatures.glGetUniformSubroutineuiv,  proc);
+    // } else {
+    //     log.err("entry point glGetUniformSubroutineuiv not found!", .{});
+    //     success = false;
+    // }
+    // if(get_proc_address("glUniformSubroutinesuiv")) |proc| {
+    //     function_pointers.glUniformSubroutinesuiv = @ptrCast(?function_signatures.glUniformSubroutinesuiv,  proc);
+    // } else {
+    //     log.err("entry point glUniformSubroutinesuiv not found!", .{});
+    //     success = false;
+    // }
+    // if(get_proc_address("glGetActiveSubroutineName")) |proc| {
+    //     function_pointers.glGetActiveSubroutineName = @ptrCast(?function_signatures.glGetActiveSubroutineName,  proc);
+    // } else {
+    //     log.err("entry point glGetActiveSubroutineName not found!", .{});
+    //     success = false;
+    // }
     if(get_proc_address("glCullFace")) |proc| {
         function_pointers.glCullFace = @ptrCast(?function_signatures.glCullFace,  proc);
     } else {
@@ -3897,30 +3897,30 @@ pub fn load(get_proc_address: fn ([*c]const u8) callconv(.C) ?*anyopaque) !void 
         log.err("entry point glIsTexture not found!", .{});
         success = false;
     }
-    if(get_proc_address("glGetActiveSubroutineUniformName")) |proc| {
-        function_pointers.glGetActiveSubroutineUniformName = @ptrCast(?function_signatures.glGetActiveSubroutineUniformName,  proc);
-    } else {
-        log.err("entry point glGetActiveSubroutineUniformName not found!", .{});
-        success = false;
-    }
-    if(get_proc_address("glGetActiveSubroutineUniformiv")) |proc| {
-        function_pointers.glGetActiveSubroutineUniformiv = @ptrCast(?function_signatures.glGetActiveSubroutineUniformiv,  proc);
-    } else {
-        log.err("entry point glGetActiveSubroutineUniformiv not found!", .{});
-        success = false;
-    }
-    if(get_proc_address("glGetSubroutineIndex")) |proc| {
-        function_pointers.glGetSubroutineIndex = @ptrCast(?function_signatures.glGetSubroutineIndex,  proc);
-    } else {
-        log.err("entry point glGetSubroutineIndex not found!", .{});
-        success = false;
-    }
-    if(get_proc_address("glGetSubroutineUniformLocation")) |proc| {
-        function_pointers.glGetSubroutineUniformLocation = @ptrCast(?function_signatures.glGetSubroutineUniformLocation,  proc);
-    } else {
-        log.err("entry point glGetSubroutineUniformLocation not found!", .{});
-        success = false;
-    }
+    // if(get_proc_address("glGetActiveSubroutineUniformName")) |proc| {
+    //     function_pointers.glGetActiveSubroutineUniformName = @ptrCast(?function_signatures.glGetActiveSubroutineUniformName,  proc);
+    // } else {
+    //     log.err("entry point glGetActiveSubroutineUniformName not found!", .{});
+    //     success = false;
+    // }
+    // if(get_proc_address("glGetActiveSubroutineUniformiv")) |proc| {
+    //     function_pointers.glGetActiveSubroutineUniformiv = @ptrCast(?function_signatures.glGetActiveSubroutineUniformiv,  proc);
+    // } else {
+    //     log.err("entry point glGetActiveSubroutineUniformiv not found!", .{});
+    //     success = false;
+    // }
+    // if(get_proc_address("glGetSubroutineIndex")) |proc| {
+    //     function_pointers.glGetSubroutineIndex = @ptrCast(?function_signatures.glGetSubroutineIndex,  proc);
+    // } else {
+    //     log.err("entry point glGetSubroutineIndex not found!", .{});
+    //     success = false;
+    // }
+    // if(get_proc_address("glGetSubroutineUniformLocation")) |proc| {
+    //     function_pointers.glGetSubroutineUniformLocation = @ptrCast(?function_signatures.glGetSubroutineUniformLocation,  proc);
+    // } else {
+    //     log.err("entry point glGetSubroutineUniformLocation not found!", .{});
+    //     success = false;
+    // }
     if(get_proc_address("glGetUniformdv")) |proc| {
         function_pointers.glGetUniformdv = @ptrCast(?function_signatures.glGetUniformdv,  proc);
     } else {
@@ -5841,7 +5841,7 @@ const function_signatures = struct {
     const glDrawTransformFeedback = fn(_mode: GLenum, _id: GLuint) void;
     const glResumeTransformFeedback = fn() void;
     const glPauseTransformFeedback = fn() void;
-    const glGetProgramStageiv = fn(_program: GLuint, _shadertype: GLenum, _pname: GLenum, _values: [*c]GLint) void;
+    // const glGetProgramStageiv = fn(_program: GLuint, _shadertype: GLenum, _pname: GLenum, _values: [*c]GLint) void;
     const glGetUniformSubroutineuiv = fn(_shadertype: GLenum, _location: GLint, _params: [*c]GLuint) void;
     const glUniformSubroutinesuiv = fn(_shadertype: GLenum, _count: GLsizei, _indices: [*c]const GLuint) void;
     const glGetActiveSubroutineName = fn(_program: GLuint, _shadertype: GLenum, _index: GLuint, _bufSize: GLsizei, _length: [*c]GLsizei, _name: [*c]GLchar) void;
@@ -6322,10 +6322,10 @@ const function_pointers = struct {
     var glDrawTransformFeedback: ?function_signatures.glDrawTransformFeedback = null;
     var glResumeTransformFeedback: ?function_signatures.glResumeTransformFeedback = null;
     var glPauseTransformFeedback: ?function_signatures.glPauseTransformFeedback = null;
-    var glGetProgramStageiv: ?function_signatures.glGetProgramStageiv = null;
-    var glGetUniformSubroutineuiv: ?function_signatures.glGetUniformSubroutineuiv = null;
-    var glUniformSubroutinesuiv: ?function_signatures.glUniformSubroutinesuiv = null;
-    var glGetActiveSubroutineName: ?function_signatures.glGetActiveSubroutineName = null;
+    // var glGetProgramStageiv: ?function_signatures.glGetProgramStageiv = null;
+    // var glGetUniformSubroutineuiv: ?function_signatures.glGetUniformSubroutineuiv = null;
+    // var glUniformSubroutinesuiv: ?function_signatures.glUniformSubroutinesuiv = null;
+    // var glGetActiveSubroutineName: ?function_signatures.glGetActiveSubroutineName = null;
     var glCullFace: ?function_signatures.glCullFace = null;
     var glFrontFace: ?function_signatures.glFrontFace = null;
     var glHint: ?function_signatures.glHint = null;
@@ -6421,10 +6421,10 @@ const function_pointers = struct {
     var glDeleteTextures: ?function_signatures.glDeleteTextures = null;
     var glGenTextures: ?function_signatures.glGenTextures = null;
     var glIsTexture: ?function_signatures.glIsTexture = null;
-    var glGetActiveSubroutineUniformName: ?function_signatures.glGetActiveSubroutineUniformName = null;
-    var glGetActiveSubroutineUniformiv: ?function_signatures.glGetActiveSubroutineUniformiv = null;
-    var glGetSubroutineIndex: ?function_signatures.glGetSubroutineIndex = null;
-    var glGetSubroutineUniformLocation: ?function_signatures.glGetSubroutineUniformLocation = null;
+    // var glGetActiveSubroutineUniformName: ?function_signatures.glGetActiveSubroutineUniformName = null;
+    // var glGetActiveSubroutineUniformiv: ?function_signatures.glGetActiveSubroutineUniformiv = null;
+    // var glGetSubroutineIndex: ?function_signatures.glGetSubroutineIndex = null;
+    // var glGetSubroutineUniformLocation: ?function_signatures.glGetSubroutineUniformLocation = null;
     var glGetUniformdv: ?function_signatures.glGetUniformdv = null;
     var glUniformMatrix4x3dv: ?function_signatures.glUniformMatrix4x3dv = null;
     var glUniformMatrix4x2dv: ?function_signatures.glUniformMatrix4x2dv = null;
